@@ -7,6 +7,12 @@ pipeline {
     }
 
     stages {
+        stage('Setup Environment') {
+            steps {
+                bat 'pip install --quiet --requirement requirements.txt'
+            }
+        }
+
         stage('Linting') {
             steps {
                 script {
