@@ -9,15 +9,15 @@ pipeline {
     stages {
         stage('Setup Environment') {
             steps {
-                bat 'pip install --quiet --requirement requirements.txt'
+                bat 'python -m pip install --quiet --requirement requirements.txt'
             }
         }
 
         stage('Linting') {
             steps {
                 script {
-                    bat 'flake8 --ignore=E501,E231 *.py'
-                    bat 'pylint --disable=C0301 --disable=C0326 test_app.py'
+                    bat 'python -m flake8 --ignore=E501,E231 *.py'
+                    bat 'python -m pylint --disable=C0301 --disable=C0326 test_app.py'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'pip install --quiet --requirement requirements.txt'
+                bat 'python -m pip install --quiet --requirement requirements.txt'
             }
         }
 
