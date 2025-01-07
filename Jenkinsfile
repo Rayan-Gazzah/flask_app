@@ -5,7 +5,7 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub')
         DOCKER_IMAGE = 'rayan07/flask_app'
         PYTHON_PATH = 'C:\\Users\\msi\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
-        KUBECONFIG = credentials('k8s-config')  // Ajout du kubeconfig
+        KUBECONFIG_FILE = credentials('k8s-config')
     }
 
     stages {
@@ -48,7 +48,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'kubectl apply -f deployment.yml --kubeconfig=%KUBECONFIG%'
+                withEnv(["KUBECONFIG=%KUBECONFIG_FILE%"]) {
+                    bat 'kubectl apply -f deployment.yml'
+                }
             }
         }
     }
