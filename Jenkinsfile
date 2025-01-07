@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub')
         DOCKER_IMAGE = 'rayan-gazzah/flask_app'
-        PYTHON_PATH = 'C:\\Users\\msi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'
+        PYTHON_PATH = 'C:\\Users\\msi\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
     }
 
     stages {
