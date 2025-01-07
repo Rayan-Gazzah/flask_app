@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'kubectl apply -f k8s/deployment.yml'
+                bat 'kubectl apply -f deployment.yml'
             }
         }
     }
